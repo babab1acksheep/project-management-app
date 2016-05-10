@@ -16,7 +16,7 @@ angular.module("UserService",[]).factory('UserService', ['$http', '$q', function
 			},*/
 		    
 		    createUser: function(user,baseUrl){
-					return $http.post(baseUrl+'user/add', user)
+					return $http.post(baseUrl+'/user/add', user)
 							.then(
 									function(response){
 										return response.data;

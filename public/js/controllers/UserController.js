@@ -3,7 +3,7 @@
 angular.module('UserCtrl',[]).controller('UserController', ['$scope', 'UserService','$location', function($scope, UserService, $location) {
 	      var baseUrl = $location.absUrl();
           var self = this;
-          self.user={firstName:'',lastName:'',email:'',employeeId:'',designation:''};
+          self.user={id:null,firstName:'',lastName:'',email:'',employeeId:'',designation:''};
           //self.users=[];
               
 /*          self.fetchAllUsers = function(baseUrl){
@@ -19,6 +19,7 @@ angular.module('UserCtrl',[]).controller('UserController', ['$scope', 'UserServi
           };*/
            
           self.createUser = function(user,baseUrl){
+          	console.log(baseUrl);
               UserService.createUser(user,baseUrl)
 		              .then(
                       self.fetchAllUsers, 
@@ -53,10 +54,10 @@ angular.module('UserCtrl',[]).controller('UserController', ['$scope', 'UserServi
           self.submit = function() {
               if(self.user.id==null){
                   console.log('Saving New User', self.user);    
-                  self.createUser(self.user);
+                  self.createUser(self.user,baseUrl);
               }else{
                   //self.updateUser(self.user, self.user.id);
-                  console.log('User updated with id ', self.user.id);
+                  console.log('User updated with id ', self.user.employeeId);
               }
               self.reset();
           };
@@ -81,7 +82,7 @@ angular.module('UserCtrl',[]).controller('UserController', ['$scope', 'UserServi
 
           
           self.reset = function(){
-              self.user={id:null,username:'',address:'',email:''};
+              self.user={id:null,firstName:'',lastName:'',email:'',employeeId:'',designation:''};
               $scope.myForm.$setPristine(); //reset Form
           };
 
