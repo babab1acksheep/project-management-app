@@ -44,7 +44,7 @@ app.post("/nerds/user/add",function(req,res){
         	console.log(err);
     	}
     	else{
-        	console.log('New employee saved!');
+        	console.log('New employee saved!!');
     	}
 	});
 })
